@@ -5,14 +5,51 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
+  hardware.opengl = { # hardware.graphics since NixOS 24.11
+    enable = true;
+    extraPackages = with pkgs; [
+      libvdpau-va-gl
     ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Enable "Silent boot"
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.initrd.systemd.enable = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "boot.shell_on_fail"
+    "udev.log_priority=3"
+    "rd.systemd.show_status=auto"
+    "bgrt_disable"
+    "acpi_osi=Linux"
+    "mem_sleep_default=deep"
+    "nvme.noacpi=1"
+  ];
+  # Hide the OS choice for bootloaders.
+  # It's still possible to open the bootloader list by pressing any key
+  # It will just not appear on screen unless a key is pressed
+  boot.loader.timeout = 0;
+  boot.plymouth = {
+    enable = true;
+    theme = "rings";
+    themePackages = with pkgs; [
+      # By default we would install all themes
+      (adi1090x-plymouth-themes.override {
+        selected_themes = [ "rings" ];
+      })
+    ];
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -28,6 +65,7 @@
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
+  security.polkit.enable = true;
   security.sudo.extraRules= [
     {  users = [ "jedsek" ];
       commands = [
@@ -101,7 +139,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = false;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -112,8 +150,20 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.fstrim.enable = true;
+  services.auto-cpufreq.enable = true;  
+  services.auto-cpufreq.settings = {
+    battery = {
+       governor = "powersave";
+       turbo = "never";
+    };
+    charger = {
+       governor = "performance";
+       turbo = "auto";
+    };
+  };
+
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -121,7 +171,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -180,14 +230,20 @@
     zellij
     unzip
     ffmpeg
+    imagemagick
     imv
     mpv
     wl-clipboard-rs
+    slurp
+    grim
+    tokei
+    wf-recorder
     dioxus-cli
     wasm-bindgen-cli
     zola
     swww
     waybar
+    swayosd
     swaynotificationcenter
     libnotify
     pueue
@@ -201,7 +257,7 @@
     flatpak
     qq
     tailwindcss_4
-    clash-rs
+    clash-meta
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -221,7 +277,10 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [8080];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
