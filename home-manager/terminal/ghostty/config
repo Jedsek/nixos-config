@@ -5,3 +5,30 @@ background-blur = true
 confirm-close-surface = false
 cursor-style-blink = false
 mouse-hide-while-typing = true
+adw-toolbar-style = "raised-border"
+gtk-wide-tabs = false
+custom-shader-animation = false
+quick-terminal-animation-duration = 0
+quick-terminal-autohide = true
+
+keybind = alt+1=unbind
+keybind = alt+2=unbind
+keybind = alt+3=unbind
+keybind = alt+4=unbind
+keybind = alt+5=unbind
+keybind = alt+6=unbind
+keybind = alt+7=unbind
+keybind = alt+8=unbind
+keybind = alt+9=unbind
+
+keybind = ctrl+shift+1=goto_tab:1
+keybind = ctrl+shift+2=goto_tab:2
+keybind = ctrl+shift+3=goto_tab:3
+keybind = ctrl+shift+4=goto_tab:4
+keybind = ctrl+shift+5=goto_tab:5
+keybind = ctrl+shift+6=goto_tab:6
+keybind = ctrl+shift+7=goto_tab:7
+keybind = ctrl+shift+8=goto_tab:8
+keybind = ctrl+shift+9=goto_tab:9
+
+keybind = ctrl+shift+d=toggle_tab_overview

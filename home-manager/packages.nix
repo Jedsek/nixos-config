@@ -21,6 +21,7 @@
     cava
     
     # wayland
+    libadwaita
     xwayland-satellite
     fuzzel
     slurp
