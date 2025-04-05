@@ -31,13 +31,13 @@
       };
       modules = [
         ./nixos # Your system configuration.
-        ./rust-overlay.nix
+        ./overlays
         home-manager.nixosModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; inherit extra_config; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users."${extra_config.user_name}" = import ./home.nix;
+          home-manager.users."${extra_config.user_name}" = import ./home-manager/home.nix;
         }
       ];
     };

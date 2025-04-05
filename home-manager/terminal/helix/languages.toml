@@ -1,0 +1,46 @@
+[[language]]
+name = "rust"
+formatter = { command = "rustfmt" , args = ["+nightly"] }
+auto-format = true
+
+# [language-server.rust-analyzer.config.check]
+# command = "clippy"
+# cargo.allFeatures = true
+# workspace = false
+
+# [language-server.rust-analyzer.config]
+# check.checkOnSave = false
+# command = "clippy"
+# cargo.allFeatures = true
+# workspace = false
+
+
+[[language]]
+name = "scheme"
+
+[[language]]
+name = "html"
+auto-format = false
+
+[[language]]
+name = "markdown"
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'<' = '>'
+
+# [[language]]
+# name = "nu"
+# scope = "source.nu"
+# injection-regex = "nu"
+# file-types = ["nu"]
+# shebangs = ["nu"]
+# comment-token = "#"
+# indent = { tab-width = 2, unit = "  " }
+# language-servers = [ "nu-lsp" ]
+
+
+# [language-server]
+# nu-lsp = { command = "nu", args = [ "--lsp" ] }

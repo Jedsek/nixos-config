@@ -1,0 +1,22 @@
+keybindings emacs
+
+export COMMAND_COUNT = 0
+fn PROMPT
+	let newline = "\n\r"
+
+	let pwd = $replace($PWD $HOME "\~")
+	let pwd = "${c::blue}$pwd${c::reset}"
+
+	let count = "[$COMMAND_COUNT]"
+	let count = "${c::red}$count${c::reset}"
+
+	let date = $(date "+%Y-%m-%d|%T")
+	let date = "${c::green}$date${c::reset}"
+	
+	if test $COMMAND_COUNT != 0
+		printf $newline
+	end
+	printf "$count <~> $date <~> $pwd $newline"
+	
+	export COMMAND_COUNT = $((COMMAND_COUNT + 1))
+end

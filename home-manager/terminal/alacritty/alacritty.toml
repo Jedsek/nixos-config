@@ -1,0 +1,36 @@
+[general]
+import = [
+  "keybindings.toml",
+  "themes/one_dark.toml",
+]
+
+[terminal]
+# shell = { program = "nu", args = ["-c", "zellij -l welcome --config-dir ~/.config/yazelix/zellij options --layout-dir ~/.config/yazelix/zellij/layouts"] }
+shell = { program = "zellij" }
+osc52 = "CopyPaste"
+
+[window]
+decorations = "None"
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+opacity = 0.92
+blur = true
+
+[scrolling]
+multiplier = 200
+
+[font]
+normal = { family = "MapleMono NF CN", style = "Regular" }
+bold = { family = "MapleMono NF CN", style = "Bold" }
+italic = { family = "MapleMono NF CN", style = "Italic" }
+bold_italic = { family = "MapleMono NF CN", style = "Bold Italic" }
+size = 12
+
+[cursor.style]
+shape = "Beam"
+blinking = "Never"
+
+[mouse]
+hide_when_typing = true
+
+

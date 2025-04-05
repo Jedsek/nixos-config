@@ -1,0 +1,172 @@
+@define-color base   #24273a;
+@define-color mantle #1e2030;
+@define-color crust  #181926;
+
+@define-color text     #cad3f5;
+@define-color subtext0 #a5adcb;
+@define-color subtext1 #b8c0e0;
+
+@define-color surface0 #363a4f;
+@define-color surface1 #494d64;
+@define-color surface2 #5b6078;
+
+@define-color overlay0 #6e738d;
+@define-color overlay1 #8087a2;
+@define-color overlay2 #939ab7;
+
+@define-color blue      #8aadf4;
+@define-color lavender  #b7bdf8;
+@define-color sapphire  #7dc4e4;
+@define-color sky       #91d7e3;
+@define-color teal      #8bd5ca;
+@define-color green     #a6da95;
+@define-color yellow    #eed49f;
+@define-color peach     #f5a97f;
+@define-color maroon    #ee99a0;
+@define-color red       #ed8796;
+@define-color mauve     #c6a0f6;
+@define-color pink      #f5bde6;
+@define-color flamingo  #f0c6c6;
+@define-color rosewater #f4dbd6;
+
+/* Root */
+#waybar {
+	font-family: MapleMono NF CN;
+	font-size: 14px;
+	background-color: rgba(0, 0, 0, 0);
+
+	color: @text;
+}
+
+#waybar > .horizontal {
+	margin: .3em .1em;
+}
+
+/* Disable some default styling on buttons */
+button {
+	padding: 0;
+	border: none;
+	font-size: 1em;
+	transition: none;
+	min-height: 0;
+}
+
+button:hover {
+	background: none;
+	box-shadow: none;
+	text-shadow: none;
+	transition: none;
+}
+
+image {
+	-gtk-icon-effect: none;
+	-gtk-icon-shadow: none;
+}
+
+/* All modules */
+.module {
+	margin: 0 .3em;
+	border-radius: .0em;
+	padding: .4em .4em;
+	box-shadow: 0 0 .2em 0 rgba(0, 0, 0, 0.5);
+
+	background-color: @base;
+}
+
+/* Workspaces and taskbar */
+#workspaces,
+#taskbar {
+	padding: .2em;
+}
+
+#workspaces button,
+#taskbar button {
+	padding: 0 .4em;
+	border-radius: .2em;
+	color: @blue;
+}
+
+#taskbar button box {
+	padding: .4em;
+}
+
+#workspaces button:not(:last-child),
+#taskbar button:not(:last-child) {
+	margin-right: .2em;
+}
+
+#workspaces button.active,
+#taskbar button.active {
+	background-color: @mauve;
+	color: @base;
+}
+
+#workspaces button.active:not(.current_output) {
+	background-color: @rosewater;
+}
+
+#workspaces button.urgent {
+	background-color: @surface1;
+	color: @red;
+}
+
+#workspaces button:hover,
+#taskbar button:hover {
+	color: @base;
+	background-color: @pink;
+}
+
+/* Other modules */
+#cpu {
+	color: @pink;
+	padding-right: 1em;
+}
+
+#memory {
+	color: @red;
+	padding-right: 1em;
+}
+
+#network {
+	color: @peach;
+	padding-right: 1.4em;
+}
+
+#pulseaudio {
+	color: @yellow;
+	padding-right: 1em;
+}
+
+#battery {
+	color: @sky;
+	padding-right: 1em;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+}
+  
+@keyframes blink {
+  to {
+    color: @rosewater;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#clock {
+	color: @blue;
+}
+
+#custom-notification {
+	padding-left: 1em;
+	padding-right: 1em;
+}

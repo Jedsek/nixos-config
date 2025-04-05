@@ -1,0 +1,84 @@
+# theme = "zed_onedark_transparent"
+# theme = "zed_onedark"
+# theme = "onedark"
+theme = "onedark_transparent"
+# theme = "nord"
+# theme = "catppuccin_frappe"
+# theme = "catppuccin_macchiato"
+# theme = "catppuccin_mocha"
+
+
+[keys.normal]
+C-A-w = ":w"
+esc = [":run-shell-command fcitx5-remote -s keyboard-us", "normal_mode"]
+
+[keys.insert]
+C-A-w = ":w"
+esc = [":run-shell-command fcitx5-remote -s keyboard-us", "normal_mode"]
+
+   
+[editor]
+shell = ["nu", "-c"]
+line-number = "relative"
+scrolloff = 15
+idle-timeout = 0
+completion-trigger-len = 2
+color-modes = true
+bufferline = "multiple"
+cursorline = false
+cursorcolumn = false
+auto-save = false
+auto-pairs = false
+auto-format = true
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+prefix-len = 0
+cursor-line = "error"
+other-lines = "error"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+separator = "  "
+left = ["mode", "spacer", "separator", "file-type", "read-only-indicator", "spinner"]
+center = ["file-modification-indicator", "spacer", "diagnostics", "file-name",  "spacer", "version-control"]
+right = ["position", "separator", "spacer", "position-percentage", "spacer", "separator", "total-line-numbers"]
+
+[editor.file-picker]
+hidden = false
+
+[editor.gutters.line-numbers]
+min-width = 0
+
+[editor.indent-guides]
+render = true
+skip-levels = 0
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = " "
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.smart-tab]
+enable = true
