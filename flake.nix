@@ -30,7 +30,7 @@
         inherit inputs;
       };
       modules = [
-        ./nixos/configuration.nix # Your system configuration.
+        ./nixos/default.nix # Your system configuration.
         # ./rust-overlay.nix
         home-manager.nixosModules.home-manager
         {
