@@ -10,13 +10,15 @@
     ./hardware-configuration.nix
   ];
 
-  hardware.opengl = { # hardware.graphics since NixOS 24.11
+  hardware.graphics = { # hardware.graphics since NixOS 24.11
     enable = true;
     extraPackages = with pkgs; [
       libvdpau-va-gl
     ];
   };
 
+
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -50,6 +52,10 @@
       })
     ];
   };
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "df95611e";
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -199,9 +205,13 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Install firefox.
   programs.firefox.enable = true;
   programs.niri.enable = true;
+  # programs.git = {
+  #   enable = true;
+  #   userEmail = "jedsek@qq.com";
+  #   userName = "jedsek";
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -256,7 +266,7 @@
     yazi
     flatpak
     qq
-    tailwindcss_4
+    tailwindcss
     clash-meta
   ];
 
