@@ -16,10 +16,17 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos =
+    let
+      extra_config = {
+        user_name = "jedsek";
+        user_email = "jedsek@qq.com";
+      };
+    in
+    nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        # user_name = "jedsek";
+        inherit extra_config;
         inherit inputs;
       };
       modules = [
@@ -27,10 +34,10 @@
         # ./rust-overlay.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs; inherit extra_config; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.jedsek = import ./home.nix;
+          home-manager.users."${extra_config.user_name}" = import ./home.nix;
         }
       ];
     };

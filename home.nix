@@ -1,15 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extra_config, ... }:
 
 {
   home.stateVersion = "25.05";
    
-  home.username = "jedsek";
-  home.homeDirectory = "/home/jedsek";
+  home.username = "${extra_config.user_name}";
+  home.homeDirectory = "/home/${extra_config.user_name}";
 
   programs.git = {
     enable = true;
-    userName = "jedsek";
-    userEmail = "jedsek@qq.com";
+    userName = "${extra_config.user_name}";
+    userEmail = "${extra_config.user_email}";
   };
 
   
@@ -70,7 +70,6 @@
 
     # language
     gcc
-    clang
 
     # apps
     qq
