@@ -1,0 +1,13 @@
+key_path = "~/.atuin-key"
+dialect = "us"
+search_mode = "skim"
+search_mode_shell_up_key_binding = "skim"
+style = "auto"
+invert = true
+inline_height = 0
+
+[theme]
+name = "marine"
+
+[sync]
+records = true

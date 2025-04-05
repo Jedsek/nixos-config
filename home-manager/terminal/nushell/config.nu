@@ -4,6 +4,7 @@
 use task.nu
 use fuzzy.nu
 source ~/.config/nushell/scripts/zoxide.nu
+source ~/.config/nushell/scripts/atuin.nu
 
 alias c = clear
 alias y = yazi
@@ -141,6 +142,15 @@ $env.config = {
       mode: [emacs, vi_normal, vi_insert]
       event: null
     }
+
+    {
+      name: atuin
+      modifier: control
+      keycode: char_r
+      mode: [emacs, vi_normal, vi_insert]
+      event: { send: executehostcommand cmd: (_atuin_search_cmd) }
+    }
+
     # {
     #   modifier: control
     #   keycode: char_l

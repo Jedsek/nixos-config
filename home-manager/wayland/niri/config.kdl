@@ -363,7 +363,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker...
     Mod+Return { spawn "ghostty"; }
-    Mod+Shift+Return { spawn "nu" "-c" "if (alacritty msg create-window | complete | get exit_code) != 0 { alacritty }"; }
+    Mod+Shift+Return { spawn "nu" "-c" "if (alacritty msg create-window | complete | get exit_code) != 0 { alacritty -e nu -n}"; }
     Mod+D { spawn "fuzzel"; }
     Mod+Shift+D { spawn "nu" "~/.config/niri/scripts/commands_menu.nu"; }
     Mod+B { spawn "firefox"; }

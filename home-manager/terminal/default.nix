@@ -8,6 +8,13 @@
     source = ./alacritty;
   };
 
+  home.file.".config/atuin" = {
+    enable = true;
+    force = true;
+    recursive = true; 
+    source = ./atuin;
+  };
+
   home.file.".config/fastfetch" = {
     enable = true;
     force = true;

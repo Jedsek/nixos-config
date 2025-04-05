@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     # terminal && editor
     ghostty
+    alacritty
+    atuin
     zellij
     nushell
     fish
