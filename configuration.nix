@@ -193,7 +193,7 @@
     description = "jedsek";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      vim
     ];
   };
 
@@ -207,11 +207,6 @@
 
   programs.firefox.enable = true;
   programs.niri.enable = true;
-  # programs.git = {
-  #   enable = true;
-  #   userEmail = "jedsek@qq.com";
-  #   userName = "jedsek";
-  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
