@@ -226,48 +226,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    ghostty
-    nushell
-    fish
-    helix
-    zed
-    xwayland-satellite
-    fuzzel
-    git
-    stow
-    zellij
-    unzip
-    ffmpeg
-    imagemagick
-    imv
-    mpv
-    wl-clipboard-rs
-    slurp
-    grim
-    tokei
-    wf-recorder
-    dioxus-cli
-    wasm-bindgen-cli
-    zola
-    swww
-    waybar
-    swayosd
-    swaynotificationcenter
-    libnotify
-    pueue
-    anyrun
-    gcc
-    clang
-    watchman
-    gnome-font-viewer
-    zoxide
-    yazi
-    flatpak
-    qq
-    tailwindcss
-    clash-meta
+    vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
